@@ -1,21 +1,20 @@
 import customtkinter as ctk
-from tkinter import filedialog, messagebox, colorchooser
 import subprocess
 
 def select_input_files():
-    files = filedialog.askopenfilenames(filetypes=[("Video Files", "*.mp4;*.mkv;*.avi")])
+    files = ctk.filedialog.askopenfilenames(filetypes=[("Video Files", "*.mp4;*.mkv;*.avi")])
     if files:
         input_files_entry.delete(0, ctk.END)
         input_files_entry.insert(0, ";".join(files))
 
 def select_output_folder():
-    folder = filedialog.askdirectory()
+    folder = ctk.filedialog.askdirectory()
     if folder:
         output_folder_entry.delete(0, ctk.END)
         output_folder_entry.insert(0, folder)
 
 def select_color(target):
-    color = colorchooser.askcolor()[1]  # Returns a tuple, second value is the hex color
+    color = ctk.colorchooser.askcolor()[1]  # Returns a tuple, second value is the hex color
     if color:
         target.set(color)
 
@@ -29,7 +28,7 @@ def generate_contact_sheet():
     end_delay_percent = end_delay_percent_entry.get()
 
     if not input_files or not output_folder:
-        messagebox.showerror("Error", "Debes seleccionar archivos de entrada y salida.")
+        ctk.messagebox.showerror("Error", "Debes seleccionar archivos de entrada y salida.")
         return
 
     # Generar el comando (esto es solo un ejemplo, necesitarás adaptarlo)
@@ -37,16 +36,16 @@ def generate_contact_sheet():
     if show_timestamps:
         command += " --show-timestamp"
 
-    messagebox.showinfo("Comando Generado", f"Comando: {command}")
+    ctk.messagebox.showinfo("Comando Generado", f"Comando: {command}")
 
 def open_file_dialog():
-    selected_file = filedialog.askopenfilename(filetypes=[("Video Files", "*.mp4;*.mkv;*.avi")])
+    selected_file = ctk.filedialog.askopenfilename(filetypes=[("Video Files", "*.mp4;*.mkv;*.avi")])
     if selected_file:
         input_files_entry.delete(0, ctk.END)
         input_files_entry.insert(0, selected_file)
 
 def open_folder_dialog():
-    selected_folder = filedialog.askdirectory()
+    selected_folder = ctk.filedialog.askdirectory()
     if selected_folder:
         output_folder_entry.delete(0, ctk.END)
         output_folder_entry.insert(0, selected_folder)
