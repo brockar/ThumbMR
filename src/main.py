@@ -2,19 +2,22 @@ import customtkinter as ctk
 import subprocess
 
 def select_input_files():
-    files = ctk.filedialog.askopenfilenames(filetypes=[("Video Files", "*.mp4;*.mkv;*.avi")])
+    files = ctk.filedialog.askopenfilenames(filetypes=[("Video Files", "*.mp4 *.mkv *.avi *.mov *.flv *.wmv *.mpg *.mpeg *.webm")])
+    print(f"Selected files: {files}")  # Debugging statement
     if files:
         input_files_entry.delete(0, ctk.END)
         input_files_entry.insert(0, ";".join(files))
 
 def select_output_folder():
     folder = ctk.filedialog.askdirectory()
+    print(f"Selected folder: {folder}")  # Debugging statement
     if folder:
         output_folder_entry.delete(0, ctk.END)
         output_folder_entry.insert(0, folder)
 
 def select_color(target):
     color = ctk.colorchooser.askcolor()[1]  # Returns a tuple, second value is the hex color
+    print(f"Selected color: {color}")  # Debugging statement
     if color:
         target.set(color)
 
@@ -67,7 +70,8 @@ root.grid_rowconfigure(8, weight=1)
 ctk.CTkLabel(root, text="Archivos de entrada:").grid(row=0, column=0, sticky="w", padx=10, pady=10)
 input_files_entry = ctk.CTkEntry(root, width=400)
 input_files_entry.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
-ctk.CTkButton(root, text="Open File", command=open_file_dialog).grid(row=0, column=2, padx=10, pady=10, sticky="w")
+#ctk.CTkButton(root, text="Open Files", command=open_file_dialog).grid(row=0, column=2, padx=10, pady=10, sticky="w")
+ctk.CTkButton(root, text="Open Files", command=select_input_files).grid(row=0, column=2, padx=10, pady=10, sticky="w")
 
 # Selección de carpeta de salida
 ctk.CTkLabel(root, text="Carpeta de salida:").grid(row=1, column=0, sticky="w", padx=10, pady=10)
