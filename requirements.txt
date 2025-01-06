@@ -1,2 +1,5 @@
 vcsi
-customtkinter
+ttkbootstrap
+numpy
+opencv-python
+Pillow
