@@ -4,4 +4,3 @@ ThumbMR es una aplicación ligera construida en Rust para generar rápidamente m
 ---
 Credits: 
 - https://github.com/amietn/vcsi
-- https://iced.rs/
