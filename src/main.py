@@ -3,6 +3,7 @@ from tkinter import filedialog
 from ttkbootstrap import Style, ttk
 import subprocess
 import webbrowser
+import os
 
 class GUI:
     def __init__(self, master):
@@ -81,8 +82,8 @@ class GUI:
         self.output_label = ttk.Label(main_frame, text="Output File:")
         self.output_label.grid(row=6, column=0, sticky="W")
         self.output_file = ttk.Entry(main_frame)
-        # self.output_file.insert(0, self.input_file.get())  # Set output_file to input_file value
-        self.output_file.insert(0, "/home/output.png")
+        output_path = os.path.join(os.path.expanduser("~"), "Pictures/routput.png")
+        self.output_file.insert(0, output_path)
         self.output_file.grid(row=6, column=1, padx=5, pady=5, sticky="EW")
 
         # Run Button
