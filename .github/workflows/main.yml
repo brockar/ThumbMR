@@ -38,7 +38,7 @@ jobs:
 
     - name: Compile with PyInstaller
       run: |
-        pyinstaller src/main.spec
+        pyinstaller main.spec
 
     - name: Upload executable as artifact
       uses: actions/upload-artifact@v3
