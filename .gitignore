@@ -6,4 +6,3 @@ __pycache__/
 # Ignore build artifacts
 build/
 dist/
-*.spec
