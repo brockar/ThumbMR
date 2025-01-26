@@ -7,7 +7,7 @@ import webbrowser
 class GUI:
     def __init__(self, master):
         self.master = master
-        master.title("Video Processing Application")
+        master.title("VSCI GUI")
 
         self.style = Style(theme="darkly")
         self.style.configure("TLabel", padding=6, font=("Helvetica", 12), background="#2c2c2c", foreground="#ffffff")
@@ -41,7 +41,7 @@ class GUI:
         main_frame.grid_columnconfigure(1, weight=1)
 
         # Title Label
-        title_label = ttk.Label(main_frame, text="Video Processing Application", style="Title.TLabel")
+        title_label = ttk.Label(main_frame, text="VCSI GUI", style="Title.TLabel")
         title_label.grid(row=0, column=0, columnspan=3, pady=10)
 
         # Recursive Mode
@@ -52,6 +52,7 @@ class GUI:
         # Input File
         ttk.Label(main_frame, text="Input File/Folder:").grid(row=2, column=0, sticky="W")
         self.input_file = ttk.Entry(main_frame, width=50)
+        self.input_file.insert(0, "/home/")
         self.input_file.grid(row=2, column=1, padx=5, pady=5, sticky="EW")
         self.browse_button = ttk.Button(main_frame, text="Browse", command=self.browse_file, bootstyle="success-outline")
         self.browse_button.grid(row=2, column=2, padx=5, pady=5)
@@ -80,7 +81,8 @@ class GUI:
         self.output_label = ttk.Label(main_frame, text="Output File:")
         self.output_label.grid(row=6, column=0, sticky="W")
         self.output_file = ttk.Entry(main_frame)
-        self.output_file.insert(0, "output.png")
+        # self.output_file.insert(0, self.input_file.get())  # Set output_file to input_file value
+        self.output_file.insert(0, "/home/output.png")
         self.output_file.grid(row=6, column=1, padx=5, pady=5, sticky="EW")
 
         # Run Button
@@ -122,8 +124,9 @@ class GUI:
         self.width_var.set(int(self.width_scale.get()))
 
     def browse_file(self):
+        initial_dir = "/home"
         if self.recursive_var.get():
-            directory = filedialog.askdirectory()
+            directory = filedialog.askdirectory(initialdir=initial_dir)
             if directory:
                 self.input_file.delete(0, 'end')
                 self.input_file.insert(0, directory)
@@ -132,7 +135,7 @@ class GUI:
                 ("Video files", "*.mp4 *.avi *.mov *.mkv *.flv *.wmv *.webm"),
                 ("All files", "*.*")
             ]
-            file = filedialog.askopenfilename(filetypes=filetypes)
+            file = filedialog.askopenfilename(initialdir=initial_dir, filetypes=filetypes)
             if file:
                 self.input_file.delete(0, 'end')
                 self.input_file.insert(0, file)
