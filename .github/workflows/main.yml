@@ -58,13 +58,13 @@ jobs:
     - name: Create Release and Upload Assets
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref_name }}  # Use the tag name that triggered the workflow
+        tag_name: ${{ github.ref_name }} 
         name: Release ${{ github.ref_name }}
         body: "Automated release for ${{ github.ref_name }}"
         draft: false
         prerelease: false
         files: |
-          artifacts/executable-ubuntu-latest/executable-ubuntu-latest
-          artifacts/executable-windows-latest/executable-windows-latest.exe
+          artifacts/executable-ubuntu-latest
+          artifacts/executable-windows-latest
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
