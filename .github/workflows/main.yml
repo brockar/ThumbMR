@@ -62,16 +62,26 @@ jobs:
         name: executable-windows-latest
         path: artifacts/windows-latest
 
+    - name: Extract Ubuntu artifact
+      run: |
+        mkdir -p extracted/ubuntu-latest
+        unzip artifacts/ubuntu-latest/executable-ubuntu-latest.zip -d extracted/ubuntu-latest
+
+    - name: Extract Windows artifact
+      run: |
+        mkdir -p extracted/windows-latest
+        unzip artifacts/windows-latest/executable-windows-latest.zip -d extracted/windows-latest
+
     - name: Create Release and Upload Assets
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ github.ref_name }} 
         name: Release ${{ github.ref_name }}
-        body: "Automated release for ${{ github.ref_name }}"
+        body: "Automated release for ${{ github.ref_name }}
         draft: false
         prerelease: false
         files: |
-          artifacts/ubuntu-latest/dist/main
-          artifacts/windows-latest/dist/main.exe
+          extracted/ubuntu-latest/dist/main
+          extracted/windows-latest/dist/main.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
