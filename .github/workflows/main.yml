@@ -77,7 +77,7 @@ jobs:
       with:
         tag_name: ${{ github.ref_name }} 
         name: Release ${{ github.ref_name }}
-        body: "Automated release for ${{ github.ref_name }}
+        body: "Automated release for ${{ github.ref_name }}"
         draft: false
         prerelease: false
         files: |
