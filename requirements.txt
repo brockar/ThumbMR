@@ -1,4 +1,5 @@
 vcsi
+tk
 ttkbootstrap
 numpy
 opencv-python

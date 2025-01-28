@@ -39,6 +39,12 @@ class GUI:
         # Configure grid to be responsive
         self.master.grid_columnconfigure(0, weight=1)
         self.master.grid_rowconfigure(0, weight=1)
+        notebook.grid_columnconfigure(0, weight=1)
+        notebook.grid_rowconfigure(0, weight=1)
+        simple_tab.grid_columnconfigure(0, weight=1)
+        simple_tab.grid_rowconfigure(0, weight=1)
+        advanced_tab.grid_columnconfigure(0, weight=1)
+        advanced_tab.grid_rowconfigure(0, weight=1)
         main_frame.grid_columnconfigure(1, weight=1)
 
         # Title Label
