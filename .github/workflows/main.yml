@@ -50,10 +50,17 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Download artifacts
+    - name: Download Ubuntu artifact
       uses: actions/download-artifact@v4
       with:
-        path: artifacts
+        name: executable-ubuntu-latest
+        path: artifacts/ubuntu-latest
+
+    - name: Download Windows artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: executable-windows-latest
+        path: artifacts/windows-latest
 
     - name: Create Release and Upload Assets
       uses: softprops/action-gh-release@v1
@@ -64,7 +71,7 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          artifacts/executable-ubuntu-latest
-          artifacts/executable-windows-latest
+          artifacts/ubuntu-latest/dist/main
+          artifacts/windows-latest/dist/main.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
