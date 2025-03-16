@@ -1,0 +1,2 @@
+[console_scripts]
+thumbmr = src.main:main

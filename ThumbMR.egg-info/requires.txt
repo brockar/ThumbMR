@@ -1,0 +1,5 @@
+vcsi
+ttkbootstrap
+numpy
+opencv-python
+Pillow

@@ -13,7 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'thumbmr=src.main:main',  # Adjust this line according to your main entry point
+            'thumbmr=src.main:main', 
         ],
     },
 )

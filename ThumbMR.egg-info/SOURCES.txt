@@ -1,0 +1,8 @@
+README.md
+setup.py
+ThumbMR.egg-info/PKG-INFO
+ThumbMR.egg-info/SOURCES.txt
+ThumbMR.egg-info/dependency_links.txt
+ThumbMR.egg-info/entry_points.txt
+ThumbMR.egg-info/requires.txt
+ThumbMR.egg-info/top_level.txt
