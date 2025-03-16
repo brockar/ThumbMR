@@ -3,7 +3,7 @@ name: Package and Publish Project
 on:
   push:
     tags:
-      - 'v*'  # Trigger the workflow on version tags
+      - 'v*' 
 
 jobs:
   build:
